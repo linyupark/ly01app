@@ -1,0 +1,39 @@
+---
+// https://unocss.dev/interactive/
+export interface Props {
+  title?: string; // 标题
+  attrs?: {
+    navClass?: any[];
+    bgClass?: any[];
+    innerClass?: any[];
+    titleClass?: any[];
+  };
+}
+const { attrs, title } = Astro.props;
+---
+
+<!-- navbar -->
+<section w-full z-20 sticky class:list={attrs?.navClass ?? []}>
+  <!-- navbar bg -->
+  <div absolute w-full h-full left-0 top-0 class:list={attrs?.bgClass ?? []}>
+  </div>
+  <div
+    flex
+    relative
+    items-center
+    w-full
+    overflow-hidden
+    class:list={attrs?.innerClass ?? ["justify-center", "h-12"]}
+  >
+    <div slot="left"></div>
+    <slot>
+      <div
+        whitespace-nowrap
+        class:list={attrs?.titleClass ?? ["text-start", "font-normal"]}
+      >
+        {title}
+      </div>
+    </slot>
+    <div slot="right"></div>
+  </div>
+</section>

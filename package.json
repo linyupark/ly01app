@@ -1,0 +1,26 @@
+{
+  "name": "ly01app",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^5.1.2",
+    "@astrojs/svelte": "^2.1.1",
+    "astro": "^2.4.3",
+    "svelte": "^3.59.1"
+  },
+  "devDependencies": {
+    "@iconify-json/ion": "^1.1.10",
+    "@unocss/astro": "^0.51.12",
+    "@unocss/preset-attributify": "^0.51.12",
+    "@unocss/preset-icons": "^0.51.12",
+    "@unocss/preset-uno": "^0.51.12",
+    "@unocss/reset": "^0.51.12"
+  }
+}

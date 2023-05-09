@@ -1,0 +1,39 @@
+---
+/**
+ * class: string
+ * hasHeader: boolean
+ */
+const { class: className, hasHeader } = Astro.props;
+---
+
+<div
+  class:list={[
+    "astro-page",
+    "h-full",
+    "w-full",
+    "overflow-auto",
+    "absolute",
+    className,
+  ]}
+>
+  {
+    hasHeader && (
+      <header>
+        <slot name="header" />
+      </header>
+    )
+  }
+  <slot />
+</div>
+
+<style>
+  .astro-page {
+    box-sizing: border-box;
+    left: calc(0 + var(--astro-safe-area-left));
+    right: calc(0 + var(--astro-safe-area-right));
+    padding-bottom: var(--astro-safe-area-bottom);
+  }
+  header {
+    padding-top: calc(0 + var(--astro-safe-area-top));
+  }
+</style>

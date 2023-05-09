@@ -1,0 +1,22 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class:list={["astro-safe-area", className]}><slot /></div>
+
+<style is:global>
+  :root {
+    --astro-safe-area-top: 0;
+    --astro-safe-area-right: 0;
+    --astro-safe-area-bottom: 0;
+    --astro-safe-area-left: 0;
+  }
+  @supports (left: env(safe-area-inset-left)) {
+    .astro-safe-area {
+      --astro-safe-area-top: env(safe-area-inset-top);
+      --astro-safe-area-right: env(safe-area-inset-right);
+      --astro-safe-area-bottom: env(safe-area-inset-bottom);
+      --astro-safe-area-left: env(safe-area-inset-left);
+    }
+  }
+</style>
