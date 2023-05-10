@@ -1,21 +1,13 @@
 ---
-/**
- * class: string
- * hasHeader: boolean
- */
+// https://unocss.dev/interactive/
+export interface Props {
+  class?: string;
+  hasHeader?: boolean;
+}
 const { class: className, hasHeader } = Astro.props;
 ---
 
-<div
-  class:list={[
-    "astro-page",
-    "h-full",
-    "w-full",
-    "overflow-auto",
-    "absolute",
-    className,
-  ]}
->
+<div h-full w-full overflow-auto absolute class:list={className ?? []}>
   {
     hasHeader && (
       <header>
@@ -29,11 +21,11 @@ const { class: className, hasHeader } = Astro.props;
 <style>
   .astro-page {
     box-sizing: border-box;
-    left: calc(0 + var(--astro-safe-area-left));
-    right: calc(0 + var(--astro-safe-area-right));
     padding-bottom: var(--astro-safe-area-bottom);
+    padding-left: var(--astro-safe-area-left);
+    padding-right: var(--astro-safe-area-right);
   }
   header {
-    padding-top: calc(0 + var(--astro-safe-area-top));
+    padding-top: var(--astro-safe-area-top);
   }
 </style>

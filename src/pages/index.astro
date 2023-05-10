@@ -8,17 +8,16 @@ import Navbar from "$src/components/astro/uno/navbar.astro";
 
 <Layout title="Welcome to Astro.">
   <SafeArea>
-    <Page hasHeader headerBgClass="bg-bluegray">
+    <Page hasHeader>
       <div slot="header">
         <Navbar
-          title="title"
           attrs={{
-            navClass: ["text-[22px]"],
-            bgClass: ["bg-red-1"],
-            // innerClass: [],
-            titleClass: ["font-light"]
+            bgClass: ["bg-orange-2"],
           }}
-        />
+        >
+          <a slot="left">asda</a>
+          FastPay
+        </Navbar>
       </div>
       <main>
         <h1>

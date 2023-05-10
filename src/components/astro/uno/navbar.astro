@@ -1,15 +1,17 @@
 ---
 // https://unocss.dev/interactive/
 export interface Props {
-  title?: string; // 标题
   attrs?: {
     navClass?: any[];
     bgClass?: any[];
     innerClass?: any[];
+    leftClass?: any[];
     titleClass?: any[];
+    subTitleClass?: any[];
+    rightClass?: any[];
   };
 }
-const { attrs, title } = Astro.props;
+const { attrs } = Astro.props;
 ---
 
 <!-- navbar -->
@@ -23,17 +25,44 @@ const { attrs, title } = Astro.props;
     items-center
     w-full
     overflow-hidden
-    class:list={attrs?.innerClass ?? ["justify-center", "h-12"]}
+    class:list={["justify-between", "h-12"].concat(attrs?.innerClass ?? [])}
   >
-    <div slot="left"></div>
-    <slot>
+    <div
+      flex
+      justify-center
+      items-center
+      h-full
+      mx-1
+      class:list={attrs?.leftClass ?? []}
+    >
+      <slot name="left" />
+    </div>
+    <div
+      whitespace-nowrap
+      class:list={["text-center", "font-500", "text-5"].concat(
+        attrs?.titleClass ?? []
+      )}
+    >
+      <slot />
       <div
-        whitespace-nowrap
-        class:list={attrs?.titleClass ?? ["text-start", "font-normal"]}
+        font-normal
+        leading-none
+        text-2
+        opacity-55
+        class:list={attrs?.subTitleClass ?? []}
       >
-        {title}
+        <slot name="subTitle" />
       </div>
-    </slot>
-    <div slot="right"></div>
+    </div>
+    <div
+      flex
+      justify-center
+      items-center
+      h-full
+      mx-1
+      class:list={attrs?.rightClass ?? []}
+    >
+      <slot name="right" />
+    </div>
   </div>
 </section>
