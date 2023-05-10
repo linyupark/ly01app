@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import SafeArea from "$src/components/astro/safe-area-wrap.astro";
 import Page from "$src/components/astro/uno/page.astro";
 import Navbar from "$src/components/astro/uno/navbar.astro";
+import BackLink from "$src/components/svelte/backLink.svelte";
+import Ptr from "$src/components/svelte/ptr.svelte";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,91 +13,29 @@ import Navbar from "$src/components/astro/uno/navbar.astro";
       <div slot="header">
         <Navbar
           attrs={{
+            navClass: ["drop-shadow-sm", "!fixed"],
             bgClass: ["bg-orange-2"],
           }}
         >
-          <a slot="left">asda</a>
+          <div slot="left" h-full w-14><BackLink client:load /></div>
           FastPay
+          <div slot="right" w-14></div>
         </Navbar>
       </div>
+      <div h-12></div>
       <main>
-        <h1>
-          Welcome to <span class="text-gradient">Astro</span>
-        </h1>
-        <p class="instructions">
-          To get started, open the directory <code>src/pages</code> in your project.<br
-          />
-          <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-        </p>
-        <ul role="list" class="link-card-grid">
-          <Card
-            href="https://docs.astro.build/"
-            title="Documentation"
-            body="Learn how Astro works and explore the official API docs."
-          />
-          <Card
-            href="https://astro.build/integrations/"
-            title="Integrations"
-            body="Supercharge your project with new frameworks and libraries."
-          />
-          <Card
-            href="https://astro.build/themes/"
-            title="Themes"
-            body="Explore a galaxy of community-built starter themes."
-          />
-          <Card
-            href="https://astro.build/chat/"
-            title="Community"
-            body="Come say hi to our amazing Discord community. ❤️"
-          />
-        </ul>
+        <Ptr client:load>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+        </Ptr>
       </main>
     </Page>
   </SafeArea>
 </Layout>
 
-<style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-    height: calc(50px + var(--f7-safe-area-top));
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
-</style>
+<style></style>

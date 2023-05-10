@@ -19,10 +19,12 @@ function remToVwPreset(options = {}) {
             //     remRE,
             //     (_, p1) => `${pxToVw(p1 * baseFontSize)}vw`
             //   )
-            i[1] = value.replace(pxRE, (_, p1) => `${pxToVw(p1)}vw`);
+            i[1] = value.replace(pxRE, (_, p1) =>
+              p1 <= 1 ? `${p1}px` : `${pxToVw(p1)}vw`
+            );
       });
     },
   };
 }
 
-export default remToVwPreset
+export default remToVwPreset;
