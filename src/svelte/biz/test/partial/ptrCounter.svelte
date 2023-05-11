@@ -1,19 +1,27 @@
 <script>
-  import { atom } from "nanostores";
   import Ptr from "$src/svelte/com/ptr.svelte";
-  const counter = atom(0);
+  import { onMount } from "svelte";
+
+  let user
+
+  onMount(async () => {
+    const c = await import("$src/libs/nanostores/demo/mpa")
+    user = c.user
+  })
 </script>
 
 <main>
   <Ptr
     onRefresh={async () => {
       await new Promise((r) => setTimeout(r, 2000));
-      counter.set(counter.get() + 1);
-      console.log(counter.get());
+      user.setKey('age', user.get().age + 1)
       return Promise.resolve();
     }}
   >
-    <p>{$counter}</p>
+    <p>{$user?.age ?? ''}</p>
+    <p>
+      <a href="/about">About</a>
+    </p>
     <div class="flex animate-pulse p-3">
       <div class="flex-shrink-0">
         <span

@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<script>
+  import { user } from "$src/libs/nanostores/demo/mpa";
+  document.querySelector("#user-age").innerHTML = user.get().age;
+</script>
+
+<Layout title="Welcome to Astro.">
+  <span id="user-age"></span>
+</Layout>
