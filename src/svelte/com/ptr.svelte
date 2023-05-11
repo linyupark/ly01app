@@ -13,7 +13,7 @@
       instructionsPullToRefresh: " ",
       instructionsReleaseToRefresh: " ",
       instructionsRefreshing: " ",
-      iconRefreshing: `<i i-ion-reload-outline animate-spin />`,
+      iconRefreshing: `<i i-ion-load-c animate-spin />`,
       distThreshold: 40,
       distReload: 30,
       getStyles: () =>
