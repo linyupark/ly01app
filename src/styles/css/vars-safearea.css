@@ -1,0 +1,17 @@
+/* 需要加入安全区间的地方引入并在容器上添加class x01-safearea */
+
+:root {
+  --x01-safe-top: 0;
+  --x01-safe-right: 0;
+  --x01-safe-bottom: 0;
+  --x01-safe-left: 0;
+}
+
+@supports (left: env(safe-area-inset-left)) {
+  .x01-safearea {
+    --x01-safe-top: env(safe-area-inset-top);
+    --x01-safe-right: env(safe-area-inset-right);
+    --x01-safe-bottom: env(safe-area-inset-bottom);
+    --x01-safe-left: env(safe-area-inset-left);
+  }
+}
