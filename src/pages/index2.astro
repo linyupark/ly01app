@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Page from "$src/components/konsta/page.astro";
+import Navbar from "$src/components/konsta/navbar.astro";
+import BackLink from "$src/svelte/com/backLink.svelte";
+import PtrCounter from "$src/svelte/biz/test/partial/ptrCounter.svelte";
+---
+
+<Layout title="Welcome to Astro.">
+  <Page hasHeader>
+    <div slot="header">
+      <Navbar
+        attrs={{
+          navClass: ["drop-shadow-sm", "!fixed"],
+          bgClass: ["bg-orange-2"],
+        }}
+      >
+        <div slot="left" h-full w-14><BackLink client:load /></div>
+        FastPay
+        <div slot="right" w-14></div>
+      </Navbar>
+    </div>
+    <div h-12></div>
+    <PtrCounter client:idle />
+  </Page>
+</Layout>
+
+<style></style>
