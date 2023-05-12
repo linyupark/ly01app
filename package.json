@@ -10,9 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/image": "^0.16.8",
     "@astrojs/node": "^5.1.2",
     "@astrojs/svelte": "^2.1.1",
-    "astro": "^2.4.3",
+    "astro": "^2.4.5",
     "cheerio": "^1.0.0-rc.12",
     "nanostores": "^0.8.1",
     "sass": "^1.62.1",
