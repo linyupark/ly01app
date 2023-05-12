@@ -1,6 +1,6 @@
 ---
 // import { Image } from "@astrojs/image/components";
-import MSearch from "$src/svelte/biz/ly01ml/partial/msearch.svelte"
+import MSearch from "$src/svelte/biz/ly01ml/partial/msearch.svelte";
 import * as cheerio from "cheerio";
 const bingDomain = "https://www.bing.com";
 const response = await fetch(bingDomain);
@@ -8,7 +8,8 @@ const html = await response.text();
 const $ = cheerio.load(html);
 const bingBgStyle = $(".img_cont")
   .attr("style")
-  .replace("/th", `${bingDomain}/th`);
+  .replace("/th", `${bingDomain}/th`)
+  .replace("display: block;", "");
 ---
 
 <html>
