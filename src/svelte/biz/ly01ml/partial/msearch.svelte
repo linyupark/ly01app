@@ -45,6 +45,10 @@
   )}&fromSearchBar=true&tbm=youchat`}
   target="_blank">AI对话</a
 >
+<a
+  href={`https://unocss.dev/interactive/?s=${encodeURIComponent(value)}`}
+  target="_blank">UnoCSS</a
+>
 
 <style lang="scss">
   a {
