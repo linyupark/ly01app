@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  ly01app:
+    build: .
+    restart: unless-stopped
+    container_name: ly01app
+    stdin_open: true
+    tty: true
+    ports:
+      - "4000:3000"
