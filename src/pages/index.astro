@@ -1,19 +1,25 @@
 ---
 // import { Image } from "@astrojs/image/components";
 import MSearch from "$src/svelte/biz/ly01ml/partial/msearch.svelte";
+import Sinahq from "$src/svelte/biz/ly01ml/partial/sinahq.svelte";
 import * as cheerio from "cheerio";
-const bingDomain = "https://cn.bing.com";
-const response = await fetch(bingDomain);
-const html = await response.text();
-const $ = cheerio.load(html);
-let bingBgStyle = $(".img_cont")
-  .attr("style")
-  .replace("display: block;", "");
-if (bingBgStyle.includes('https')) {
-  bingBgStyle = bingBgStyle.replace(bingDomain, 'https://s.cn.bing.net')
-}
-else {
-  bingBgStyle = bingBgStyle.replace("/th", `https://s.cn.bing.net/th`)
+
+let bingBgStyle = "";
+
+try {
+  const bingDomain = "https://cn.bing.com";
+  const response = await fetch(bingDomain);
+  const html = await response.text();
+  const $ = cheerio.load(html);
+  bingBgStyle = $(".img_cont").attr("style").replace("display: block;", "");
+  if (bingBgStyle.includes("https")) {
+    bingBgStyle = bingBgStyle.replace(bingDomain, "https://s.cn.bing.net");
+  } else {
+    bingBgStyle = bingBgStyle.replace("/th", `https://s.cn.bing.net/th`);
+  }
+} catch (e) {
+  bingBgStyle =
+    'background-image: url("https://s.cn.bing.net/th?id=OHR.CormorantBridge_ZH-CN7673299694_1920x1080.webp&qlt=50");';
 }
 ---
 
@@ -31,7 +37,6 @@ else {
       <i i-ion-search-outline ml-2 mr-4></i>
       <MSearch client:load />
     </div>
-
     <div class="block" flex flex-wrap bg-white bg-op-80>
       <h3 bg-fuchsia-5 bg-op-80 rounded text-white p-1 text-center w-10>
         私服
@@ -127,6 +132,11 @@ else {
         <i text-3 mr-1></i>
         无损压缩
       </a>
+    </div>
+
+    <div class="block" flex flex-wrap bg-white bg-op-80>
+      <h3 bg-rose-6 bg-op-80 rounded text-white p-1 text-center w-10>韭场</h3>
+      <Sinahq client:only />
     </div>
   </body>
 </html>

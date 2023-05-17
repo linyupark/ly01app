@@ -1,5 +1,4 @@
 import iconv from "iconv-lite";
-import currency from "currency.js";
 
 export async function post({ request }) {
   const data = await request.json();
