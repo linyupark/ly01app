@@ -6,10 +6,15 @@ const bingDomain = "https://cn.bing.com";
 const response = await fetch(bingDomain);
 const html = await response.text();
 const $ = cheerio.load(html);
-const bingBgStyle = $(".img_cont")
+let bingBgStyle = $(".img_cont")
   .attr("style")
-  .replace("/th", `${bingDomain}/th`)
   .replace("display: block;", "");
+if (bingBgStyle.includes('https')) {
+  bingBgStyle = bingBgStyle.replace(bingDomain, 'https://s.cn.bing.net')
+}
+else {
+  bingBgStyle = bingBgStyle.replace("/th", `https://s.cn.bing.net/th`)
+}
 ---
 
 <html>
