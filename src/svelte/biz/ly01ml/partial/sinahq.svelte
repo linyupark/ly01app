@@ -27,7 +27,7 @@
       const r = await res.json();
       // console.log({ r })
       if (r.result) {
-        hqRes = {...r.result};
+        hqRes = { ...r.result };
       }
     } catch {
       hqRes = {};
@@ -114,8 +114,12 @@
       {#each searchRes as item}
         <span
           block
-          class="text-gray-700 block px-4 py-2 text-sm cursor-pointer"
-          hover="bg-gray-100 text-gray-900"
+          text-gray-700
+          px-4
+          py-2
+          text-sm
+          cursor-pointer
+          class="hover:bg-gray-100 hover:text-gray-900"
           on:click={addItem(item)}
         >
           {item}
@@ -130,6 +134,5 @@
   .search-r {
     max-height: 200px;
     overflow-y: auto;
-    bottom: 40px;
   }
 </style>
