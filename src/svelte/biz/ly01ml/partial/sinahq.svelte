@@ -60,6 +60,15 @@
     localStorage.setItem(storeCodeName, JSON.stringify(codeList));
   };
 
+  // 删除
+  const rm = async (code) => {
+    const ix = codeList.indexOf(code);
+    if (ix === -1) return;
+    codeList.splice(ix, 1);
+    localStorage.setItem(storeCodeName, JSON.stringify(codeList));
+    delete hqRes[code];
+  };
+
   const debounce = (v) => {
     if (v === "" || !v) {
       codeVal = "";
@@ -78,6 +87,9 @@
   }
 
   onMount(() => {
+    if (codeList.length > 0) {
+      sinaHQ();
+    }
     hqTimer = setInterval(() => {
       if (codeList.length > 0) {
         sinaHQ();
@@ -90,7 +102,7 @@
   });
 </script>
 
-<div class="relative inline-block text-left">
+<div class="relative text-left">
   <input
     type="search"
     bg-white
@@ -104,7 +116,7 @@
     placeholder="韭菜代码"
   />
   <div
-    in:fade={searchLoading || searchRes.length > 0}
+    in:slide={searchLoading || searchRes.length > 0}
     class="absolute left-0 z-10 mt-2 w-56 rounded-md bg-white shadow-lg search-r"
   >
     {#if searchLoading}
@@ -112,7 +124,7 @@
     {/if}
     {#if searchRes.length > 0}
       {#each searchRes as item}
-        <span
+        <button
           block
           text-gray-700
           px-4
@@ -123,16 +135,48 @@
           on:click={addItem(item)}
         >
           {item}
-        </span>
+        </button>
       {/each}
     {/if}
   </div>
-  {JSON.stringify(hqRes)}
 </div>
+
+{#each Object.keys(hqRes) as code}
+  <a
+    class="stk"
+    href={`https://xueqiu.com/S/${hqRes[code]?.fcode?.toUpperCase()}`}
+    target="_blank"
+  >
+    {hqRes[code]?.name ?? "--"}
+    <span class="current">{hqRes[code]?.current ?? "--"}</span>
+    <span class="updown">{hqRes[code]?.updown ?? "--"}</span>
+  </a>
+  <button on:click={rm(code)}><i class="i-ion-trash-bin-outline text-3" /></button>
+{/each}
 
 <style lang="scss">
   .search-r {
     max-height: 200px;
     overflow-y: auto;
+  }
+  a.stk {
+    border-bottom: 1px dotted #999;
+    margin-left: 15px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s;
+    font-size: 12px;
+    &:hover {
+      color: rgb(199, 84, 12);
+      transform: translateY(1px);
+      border: none;
+    }
+    span {
+      margin-left: 5px;
+      width: 50px;
+    }
+    .current {
+      width: 60px;
+    }
   }
 </style>

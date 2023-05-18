@@ -72,6 +72,7 @@ export async function post({ request }) {
         current,
         offset: offset.format().slice(0, -2),
         updown: `${updown.format().slice(0, -2)}%`,
+        fcode: codeListFormated[i],
       };
     });
 
