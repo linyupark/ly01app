@@ -30,7 +30,7 @@
         hqRes = { ...r.result };
       }
     } catch {
-      hqRes = {};
+      // hqRes = {};
     }
   };
 
@@ -58,6 +58,7 @@
     if (codeList.indexOf(selectCode) !== -1) return;
     codeList.unshift(selectCode);
     localStorage.setItem(storeCodeName, JSON.stringify(codeList));
+    sinaHQ();
   };
 
   // 删除
@@ -67,6 +68,7 @@
     codeList.splice(ix, 1);
     localStorage.setItem(storeCodeName, JSON.stringify(codeList));
     delete hqRes[code];
+    sinaHQ();
   };
 
   const debounce = (v) => {
@@ -150,8 +152,10 @@
     {hqRes[code]?.name ?? "--"}
     <span class="current">{hqRes[code]?.current ?? "--"}</span>
     <span class="updown">{hqRes[code]?.updown ?? "--"}</span>
+    <button on:click={rm(code)}
+      ><i class="i-ion-trash-bin-outline text-3" /></button
+    >
   </a>
-  <button on:click={rm(code)}><i class="i-ion-trash-bin-outline text-3" /></button>
 {/each}
 
 <style lang="scss">
@@ -166,10 +170,20 @@
     align-items: center;
     transition: all 0.2s;
     font-size: 12px;
+    button {
+      visibility: hidden;
+      width: 0;
+    }
     &:hover {
       color: rgb(199, 84, 12);
       transform: translateY(1px);
       border: none;
+      button {
+        visibility: visible;
+        i {
+          color: red;
+        }
+      }
     }
     span {
       margin-left: 5px;
