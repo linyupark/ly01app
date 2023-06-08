@@ -146,8 +146,34 @@ try {
       <h3 bg-rose-6 bg-op-80 rounded text-white p-1 text-center w-10>韭场</h3>
       <Sinahq client:load />
     </div>
+
+    <!-- <button id="logtoLogin">
+      登录
+    </button>
+
+    <button id="logtoLogout">
+      退出
+    </button> -->
   </body>
 </html>
+
+<!-- <script>
+  import LogtoClient from "@logto/browser";
+
+  const logtoClient = new LogtoClient({
+    endpoint: "https://auth.80yes.ml/",
+    appId: "50f9tqw7n8joedujmaa2y",
+  });
+  logtoClient.isAuthenticated().then(r => {
+    console.log(r)
+  })
+  document.getElementById("logtoLogin").addEventListener('click', () => {
+    logtoClient.signIn('http://localhost:3001/logto-callback')
+  })
+  document.getElementById("logtoLogout").addEventListener('click', () => {
+    logtoClient.signOut('http://localhost:3001/logto-signout')
+  })
+</script> -->
 
 <style lang="scss">
   body {

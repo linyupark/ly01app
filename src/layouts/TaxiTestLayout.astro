@@ -1,0 +1,37 @@
+---
+import LocalState from "$src/svelte/biz/test/partial/localState.svelte";
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <ul id="topNav">
+      <li><a href="/taxi/home">home</a></li>
+      <li><a href="/taxi/about">about</a></li>
+      <li><LocalState client:load /></li>
+    </ul>
+    <hr />
+    <main data-taxi data-taxi-view>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script>
+  import * as Taxi from "@unseenco/taxi";
+  import { taxi } from "$src/libs/nanostores/demo/spa";
+  const t = new Taxi.Core();
+  taxi.set(t);
+</script>

@@ -1,0 +1,18 @@
+<h1>Hello</h1>
+
+<script>
+  import LogtoClient from "@logto/browser";
+
+  const logtoClient = new LogtoClient({
+    endpoint: "https://auth.80yes.ml/",
+    appId: "50f9tqw7n8joedujmaa2y",
+  });
+
+  try {
+    await logtoClient.handleSignInCallback(window.location.href).then(() => {
+      logtoClient.isAuthenticated().then((r) => console.log(r))
+    });
+  } catch {
+    // 处理错误
+  }
+</script>

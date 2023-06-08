@@ -1,4 +1,4 @@
-import { map, onSet } from "nanostores";
+import { map, atom, onSet } from "nanostores";
 
 const defaultValue = JSON.parse(
   sessionStorage.getItem("_user") ??
