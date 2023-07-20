@@ -41,19 +41,19 @@ try {
       <h3 bg-fuchsia-5 bg-op-80 rounded text-white p-1 text-center w-10>
         私服
       </h3>
-      <a href="https://blog.80yes.ml/">
+      <a href="https://blog.ly01.top/">
         <i i-ion-edit text-3 mr-1></i>
         博客
       </a>
-      <a href="http://drives.ly01.ml:9081/">
+      <a href="http://drives.ly011.top:9081/">
         <i i-ion-file-tray-full-outline text-3 mr-1></i>
         网盘
       </a>
-      <a href="http://media.ly01.ml:8096/">
+      <a href="http://media.ly011.top:8096/">
         <i i-ion-film-outline text-3 mr-1></i>
         影音
       </a>
-      <a href="https://io-console.80yes.ml/">
+      <a href="https://io-console.ly011.top/">
         <i i-ion-server-outline text-3 mr-1></i>
         存储
       </a>
@@ -162,16 +162,16 @@ try {
 
   const logtoClient = new LogtoClient({
     endpoint: "https://auth.80yes.ml/",
-    appId: "50f9tqw7n8joedujmaa2y",
+    appId: "ezv36ipd2hec9c2w78mv6",
   });
   logtoClient.isAuthenticated().then(r => {
     console.log(r)
   })
   document.getElementById("logtoLogin").addEventListener('click', () => {
-    logtoClient.signIn('http://localhost:3001/logto-callback')
+    logtoClient.signIn('http://localhost:3000/logto-callback')
   })
   document.getElementById("logtoLogout").addEventListener('click', () => {
-    logtoClient.signOut('http://localhost:3001/logto-signout')
+    logtoClient.signOut('http://localhost:3000/logto-signout')
   })
 </script> -->
 
