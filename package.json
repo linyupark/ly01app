@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "bun-publish": "bun run build && bun run preview"
+    "bun-publish": "bun -v && bun run astro build && bun run astro preview"
   },
   "dependencies": {
     "@astrojs/image": "^0.16.8",
